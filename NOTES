@@ -1,0 +1,37 @@
+The storage syntax that is outputed to twitter has metadata to help define where the data we are looking for begins and ends.  The metadata also contains a filename and because of file extentions, file type.  We are primarly concerned with when pulling data from twitter we get the binary data and not any messages in between.  Since twitter accepts ascii unicode I may make a base that is based on these chars.  Still have to test.  Right now I am working with base 16 or HEX.  I will do compression and then base 64 then unicode.  I may also add encryption and par integrity.
+
+The goal of this project is to save and restore a file on twitter but ultimatly since twitter is included in the library of congress the goal is to offload data into the future.
+
+At the time of this writing Gnip is the company that the US government has put in charge of archiving this information and who knows if they collect the images uploaded to twitter.  I could also see in the future them moving the images around and even changing image types.  The data may not be preserved unless I encode the data a special way.
+
+For now lets make it simple and move forward.
+
+One can also distribute data with this if active monitoring of a twitter stream is done or the file is small enough to fit in the available tweets.
+
+META FILE FORMAT
+
+MAIN HEADER
+TDSENC__SETOUTPUTSTART_totalmessages
+
+SUM FORMAT
+POSTID(HEX)|MESSAGETYPE:S|BASETYPE|SHA512SUM
+S|FFF|H|SHA512
+
+FILENAME FORMAT
+POSTID(HEX)|MESSAGETYPE:F|FILENAME.FILETYPE
+F|FFF|Document.odt
+
+DATA CHUNK FORMAT (:: is combiner, ie no chars)
+POSTID(HEX):checksum:MESSAGETYPE:D|DATUM
+D|FFF|DATUM
+
+
+"""
+App URL:  https://dev.twitter.com/apps/5486359/show
+Binary to Twitter is used to take Binary data
+and post it to twitter.
+"""
+
+BLA
+oothrot> webdawg_, i would think typically you should know what type of exceptions you're trying to catch, but 
+                  you can use the form `except SomeException as exc:` and then refer to `exc`
